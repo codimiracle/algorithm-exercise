@@ -5,7 +5,7 @@ using namespace std;
 typedef int Iterable;
 
 int insertion_sort(Iterable* sources, int count, int gap);
-
+int shell_sort(Iterable* sources, int count);
 Iterable data[1000];
 
 int main()
@@ -15,8 +15,7 @@ int main()
         for(int i; i < count; i++) {
             cin >> data[i];
         }
-        insertion_sort(data, count, count / 2);
-	insertion_sort(data, count, 1);
+        shell_sort(data, count);
         for (int i = 0; i < count; i++)
             cout << data[i] << " ";
         cout << endl;
@@ -37,3 +36,10 @@ int insertion_sort(Iterable* sources, int count, int gap)
         sources[checking_count] = value;
     }
 }
+int shell_sort(Iterable* sources, int count) {
+	int gaps[] = {4,2,1};
+	for (int i = 0; i < 3; i++) {
+		insertion_sort(sources, count, gaps[i]);
+	} 
+}
+
